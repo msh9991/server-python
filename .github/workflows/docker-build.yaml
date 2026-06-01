@@ -16,3 +16,6 @@ jobs:
             - name: byg docker image
               run: docker build -t "hello-python" ./HelloWorldDocker
 
+              - name: test mit imgage
+                run: docker run "hello-python"
+
