@@ -1,3 +1,3 @@
-import HelloWorld
+import HelloWorld as h
 
-HelloWorld.myPrint("Hello, World from myPrint") 
+h.myPrint("Hello, World from myPrint") 
