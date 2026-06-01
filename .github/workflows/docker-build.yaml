@@ -12,10 +12,10 @@ jobs:
         steps:
             - uses: actions/checkout@v4
 
-            
-            - name: byg docker image
+
+            - name: Build docker image
               run: docker build -t "hello-python" ./HelloWorldDocker
 
-              - name: test mit imgage
-                run: docker run "hello-python"
+            - name: test mit imgage
+              run: docker run "hello-python"
 
