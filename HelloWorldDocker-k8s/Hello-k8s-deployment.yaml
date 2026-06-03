@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Deployment
+metadata:
+  name: hello-python
+  labels:
+    app: hello-python
+spec:
+  project: default
+  source:
+    repoURL:https://github.com/msh9991/HelloWorldDocker-k8s
+    targetRevision: main
+    path: Hello-k8s-deployment.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-python
+  template:
+    metadata:
+      labels:
+        app: hello-python
+    spec:
+      containers:
+      - name: hello-python
+        image: ghcr.io/msh9991/hello-python:latest
+        ports:
+        - containerPort: 80
