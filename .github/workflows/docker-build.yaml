@@ -23,7 +23,7 @@ jobs:
               run: docker build -t ghcr.io/msh9991/hello-python:latest ./HelloWorldDocker-k8s
 
             - name: Run Docker image
-              run: docker run ghcr.io/msh9991/hello-python:latest
+              run: docker run -d ghcr.io/msh9991/hello-python:latest
 
             - name: Push docker image
               run: docker push ghcr.io/msh9991/hello-python:latest  
