@@ -20,7 +20,7 @@ jobs:
               run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             
             - name: Build and push Docker image
-              run: docker build -t ghcr.io/msh9991/hello-python:latest ./HelloWorldDocker
+              run: docker build -t ghcr.io/msh9991/hello-python:latest ./HelloWorldDocker-k8s
 
             - name: Run Docker image
               run: docker run ghcr.io/msh9991/hello-python:latest
