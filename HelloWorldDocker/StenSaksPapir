@@ -1,0 +1,48 @@
+import random
+
+def find_vinder(spiller, computer):
+    """
+    Finder vinderen i Sten, Saks, Papir.
+    
+    Parametre:
+        spiller (str): Spillerens valg.
+        computer (str): Computerens valg.
+        
+    Returnerer:
+        str: Resultatet af runden.
+    """
+    
+    if spiller == computer:
+        return "Uafgjort!"
+    elif (spiller == "sten" and computer == "saks") or \
+         (spiller == "saks" and computer == "papir") or \
+         (spiller == "papir" and computer == "sten"):
+        return "Du vandt!"
+    else:
+        return "Computeren vandt!"
+
+
+muligheder = ["sten", "saks", "papir"]
+
+print("Velkommen til Sten, Saks, Papir!")
+
+spil_igen = "ja"
+
+while spil_igen == "ja":
+    spiller_valg = input("Vælg sten, saks eller papir: ").lower()
+
+    if spiller_valg not in muligheder:
+        print("Ugyldigt valg!")
+        continue
+
+    computer_valg = random.choice(muligheder)
+
+    print(f"Du valgte: {spiller_valg}")
+    print(f"Computeren valgte: {computer_valg}")
+
+    resultat = find_vinder(spiller_valg, computer_valg)
+    print(resultat)
+
+    spil_igen = input("Vil du spille igen? (ja/nej): ").lower()
+
+print("Tak for spillet!")
