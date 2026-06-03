@@ -6,8 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/msh9991/HelloWorldDocker-k8s
-    targetRevision: main
+    repoURL: https://github.com/msh9991/server-python
     path: HelloWorldKubernetes
   destination:
     server: https://kubernetes.default.svc
