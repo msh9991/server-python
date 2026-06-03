@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hello-kubernetes
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/msh9991/server-python.git
+    targetRevision: main
+    path: HelloWorldDocker-k8s
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      

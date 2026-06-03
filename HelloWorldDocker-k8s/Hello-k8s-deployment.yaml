@@ -1,17 +1,21 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: hello-kubernetes
-  namespace: argocd
+  name: hello-python
+  labels:
+    app: hello-python
 spec:
-  project: default
-  source:
-    repoURL: https://github.com/msh9991/server-python
-    path: HelloWorldKubernetes
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-python
+  template:
+    metadata:
+      labels:
+        app: hello-python
+    spec:
+      containers:
+      - name: hello-python
+        image: ghcr.io/msh9991/hello-python:latest
+        ports:
+        - containerPort: 80
